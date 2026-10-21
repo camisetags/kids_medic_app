@@ -14,5 +14,5 @@ function EditorForm({ model, editing }: { model: DraftModel; editing: boolean })
 }
 export function NoteEditor({ note, title = '', onClose }: { note?: Note; title?: string; onClose: () => void }) {
   const model = useNoteDraft(note, title, onClose);
-  return <><Dialog open title={note ? 'Editar anotação' : 'Nova anotação'} onClose={model.close}><EditorForm model={model} editing={Boolean(note)} /></Dialog><ConfirmDialog open={model.discarding} title="Descartar este rascunho?" description="As alterações ainda não foram salvas. Você pode voltar para continuar escrevendo." action="Descartar rascunho" onConfirm={onClose} onClose={model.keep} /></>;
+  return <><Dialog open title={note ? 'Editar anotação' : 'Nova anotação'} onClose={model.close}><EditorForm model={model} editing={Boolean(note)} /></Dialog><ConfirmDialog open={model.discarding || model.blocked} title="Descartar este rascunho?" description="As alterações ainda não foram salvas. Você pode voltar para continuar escrevendo." action="Descartar rascunho" onConfirm={model.discard} onClose={model.keep} /></>;
 }

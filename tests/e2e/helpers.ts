@@ -64,3 +64,14 @@ export async function visitAtWidth(page: Page, route: string, width: number) {
   await page.goto(`/#${route}`);
   await expect(page.locator('main h1')).toBeVisible();
 }
+export async function dirtyDraftWithHistory(page: Page) {
+  await page.goto('/#/familia');
+  await page.getByRole('link', { name: 'Anotações', exact: true }).click();
+  await page.getByRole('button', { name: 'Nova anotação', exact: true }).click();
+  await page.getByLabel('Título', { exact: true }).fill('Rascunho protegido pelo histórico');
+}
+export async function prepareBookingReview(page: Page) {
+  await startBooking(page);
+  await pickSlot(page);
+  await page.getByRole('button', { name: 'Revisar agendamento' }).click();
+}

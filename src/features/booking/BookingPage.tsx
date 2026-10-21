@@ -1,3 +1,5 @@
+import { useDemo } from '../../app/useDemo';
+import { StatusMessage } from '../../ui/StatusMessage';
 import { SiteHeader } from '../landing/SiteHeader';
 import { Heading } from '../../ui/Heading';
 import { BookingStepper } from './BookingStepper';
@@ -12,5 +14,6 @@ function BookingWorkspace({ model }: { model: BookingModel }) {
 }
 export function BookingPage() {
   const model = useBooking();
-  return <><SiteHeader /><main className="container booking-page" tabIndex={-1}>{model.step === 3 ? <BookingConfirmation input={model.input} /> : <><Heading eyebrow="Um tempo para cuidar" title="Vamos marcar um encontro?" description="Escolha o atendimento, o dia e o melhor horário para a sua família." /><BookingWorkspace model={model} /></>}</main></>;
+  const { notice } = useDemo();
+  return <><SiteHeader /><main className="container booking-page" tabIndex={-1}><StatusMessage message={notice} />{model.step === 3 ? <BookingConfirmation input={model.input} /> : <><Heading eyebrow="Um tempo para cuidar" title="Vamos marcar um encontro?" description="Escolha o atendimento, o dia e o melhor horário para a sua família." /><BookingWorkspace model={model} /></>}</main></>;
 }

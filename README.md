@@ -6,7 +6,7 @@ Demonstração interativa de um site e área da família, criada para apresentar
 
 Página inicial → Agendar consulta → escolher atendimento, dia e horário → confirmar simulação → Área da família. A área da criança reúne consultas, fases e anotações; é possível cancelar uma consulta, criar/editar/excluir notas e reiniciar os exemplos.
 
-**Somente dados fictícios.** As interações são locais ao navegador. Não há reserva de consulta real, autenticação, prontuário, envio à médica, cobrança ou conteúdo clínico validado. Se o armazenamento estiver bloqueado, a aplicação mantém os exemplos durante a sessão e avisa sobre a limitação.
+**Somente dados fictícios.** As interações são locais ao navegador e a demonstração foi projetada para uso em uma única aba. Mudanças simultâneas em abas diferentes podem substituir os exemplos salvos. Não há reserva de consulta real, autenticação, prontuário, envio à médica, cobrança ou conteúdo clínico validado. Se o armazenamento estiver bloqueado, a aplicação mantém os exemplos durante a sessão e avisa sobre a limitação.
 
 ## Desenvolvimento
 

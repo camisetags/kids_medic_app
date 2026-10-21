@@ -1,4 +1,5 @@
 import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
+import { useBlocker, type Blocker } from 'react-router-dom';
 import { useDemo } from '../../app/useDemo';
 import type { Note, NoteInput } from '../../demo/types';
 type Draft = { input: NoteInput; error: string; discarding: boolean };
@@ -12,6 +13,11 @@ function useUnsavedGuard(dirty: boolean) {
     if (dirty) window.addEventListener('beforeunload', preventUnload);
     return () => window.removeEventListener('beforeunload', preventUnload);
   }, [dirty]);
+  return useBlocker(({ currentLocation, nextLocation }) => dirty && currentLocation.pathname !== nextLocation.pathname);
+}
+function keepDraft(setDraft: SetDraft, blocker: Blocker) {
+  blocker.reset?.();
+  setDraft((current) => ({ ...current, discarding: false }));
 }
 function initialInput(note: Note | undefined, title: string): NoteInput {
   return { title: note?.title ?? title, body: note?.body ?? '' };
@@ -28,6 +34,6 @@ export function useNoteDraft(note: Note | undefined, title: string, close: () =>
   const [draft, setDraft] = useState<Draft>({ input: initialInput(note, title), error: '', discarding: false });
   const { save } = useDemo();
   const dirty = draft.input.title !== initialInput(note, title).title || draft.input.body !== initialInput(note, title).body;
-  useUnsavedGuard(dirty);
-  return { ...draft, dirty, change: (input: NoteInput) => setDraft((current) => ({ ...current, input, error: '' })), close: () => requestClose(dirty, setDraft, close), save: () => saveDraft(draft.input, save, note?.id, setDraft, close), keep: () => setDraft((current) => ({ ...current, discarding: false })) };
+  const blocker = useUnsavedGuard(dirty);
+  return { ...draft, dirty, blocked: blocker.state === 'blocked', discard: () => blocker.state === 'blocked' ? blocker.proceed() : close(), change: (input: NoteInput) => setDraft((current) => ({ ...current, input, error: '' })), close: () => requestClose(dirty, setDraft, close), save: () => saveDraft(draft.input, save, note?.id, setDraft, close), keep: () => keepDraft(setDraft, blocker) };
 }

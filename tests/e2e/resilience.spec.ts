@@ -66,3 +66,23 @@ test('rota desconhecida oferece retorno ao início', async ({ page }) => {
   await page.getByRole('link', { name: 'Voltar ao início', exact: true }).click();
   await expect(page).toHaveURL(/#\/$/);
 });
+import { dirtyDraftWithHistory, prepareBookingReview } from './helpers';
+test('Voltar do navegador protege o rascunho', async ({ page }) => {
+  await dirtyDraftWithHistory(page);
+  await page.goBack();
+  await expect(page.getByRole('dialog', { name: 'Descartar este rascunho?' })).toBeVisible();
+  await page.getByRole('dialog', { name: 'Descartar este rascunho?' }).getByRole('button', { name: 'Voltar', exact: true }).click();
+  await expect(page.getByLabel('Título', { exact: true })).toHaveValue('Rascunho protegido pelo histórico');
+});
+test('descarte explícito permite voltar pelo histórico', async ({ page }) => {
+  await dirtyDraftWithHistory(page);
+  await page.goBack();
+  await page.getByRole('button', { name: 'Descartar rascunho', exact: true }).click();
+  await expect(page).toHaveURL(/#\/familia$/);
+});
+test('agenda avisa sobre persistência bloqueada antes de entrar na família', async ({ page }) => {
+  await page.addInitScript(() => { Storage.prototype.setItem = () => { throw new Error('QuotaExceeded'); }; });
+  await prepareBookingReview(page);
+  await page.getByRole('button', { name: 'Confirmar simulação' }).click();
+  await expect(page.getByRole('status')).toContainText('sessão');
+});
