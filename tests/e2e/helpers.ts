@@ -13,13 +13,13 @@ export async function pickSlot(page: Page): Promise<string> {
 }
 export async function confirmBooking(page: Page) {
   await page.getByRole('button', { name: 'Revisar agendamento' }).click();
-  await page.getByRole('button', { name: 'Confirmar simulação' }).click();
-  await page.getByRole('link', { name: 'Ir para a área da família' }).click();
-  await expect(page).toHaveURL(/#\/familia$/);
+  await page.getByRole('button', { name: 'Confirmar agendamento' }).click();
+  await page.getByRole('link', { name: 'Ver consulta' }).click();
+  await expect(page).toHaveURL(/#\/familia\/consultas$/);
 }
 export async function assertVisit(page: Page, date: string) {
-  await expect(page.getByTestId('next-appointment')).toContainText(date);
-  await expect(page.getByTestId('next-appointment')).toContainText('09:00');
+  await expect(page.locator('.appointment-row').filter({ hasText: 'Primeira consulta' })).toContainText(date);
+  await expect(page.locator('.appointment-row').filter({ hasText: 'Primeira consulta' })).toContainText('09:00');
 }
 export async function reloadAndAssertVisit(page: Page, date: string) {
   await page.reload();
@@ -33,7 +33,7 @@ export async function bookFirstVisit(page: Page) {
 }
 export async function cancelChosenVisit(page: Page, date: string) {
   await page.getByRole('link', { name: 'Consultas', exact: true }).click();
-  await page.locator('.appointment-row').filter({ hasText: date }).getByRole('button', { name: 'Cancelar simulação' }).click();
+  await page.locator('.appointment-row').filter({ hasText: date }).getByRole('button', { name: 'Cancelar consulta' }).click();
   await page.getByRole('button', { name: 'Cancelar agendamento', exact: true }).click();
 }
 export async function createNote(page: Page, title: string, body: string) {

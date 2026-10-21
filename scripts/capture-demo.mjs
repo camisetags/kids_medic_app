@@ -19,9 +19,10 @@ for (const width of [1440, 390]) {
   await capture(page, 'schedule', width);
   await page.getByRole('button', { name: 'Revisar agendamento' }).click();
   await capture(page, 'review', width);
-  await page.getByRole('button', { name: 'Confirmar simulação' }).click();
+  await page.getByRole('button', { name: 'Confirmar agendamento' }).click();
   await capture(page, 'confirmation', width);
-  await page.getByRole('link', { name: 'Ir para a área da família' }).click();
+  await page.getByRole('link', { name: 'Ver consulta' }).click();
+  await page.goto('/#/familia');
   await page.getByTestId('next-appointment').waitFor();
   await capture(page, 'family', width);
   await page.goto('/#/familia/fases');

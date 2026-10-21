@@ -55,9 +55,9 @@ test('Escape permite preservar um rascunho não salvo', async ({ page }) => {
 });
 test('build funciona em subdiretório e recarrega a área da criança', async ({ page }) => {
   await page.goto('http://127.0.0.1:4174/kids_medic_app/#/familia');
-  await expect(page.getByRole('heading', { name: 'Olá, Marina.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Resumo' })).toBeVisible();
   await page.reload();
-  await expect(page.getByRole('heading', { name: 'Olá, Marina.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Resumo' })).toBeVisible();
   await expect(page).toHaveTitle('Área da família · Dra. Dayse Mary');
 });
 test('rota desconhecida oferece retorno ao início', async ({ page }) => {
@@ -83,6 +83,6 @@ test('descarte explícito permite voltar pelo histórico', async ({ page }) => {
 test('agenda avisa sobre persistência bloqueada antes de entrar na família', async ({ page }) => {
   await page.addInitScript(() => { Storage.prototype.setItem = () => { throw new Error('QuotaExceeded'); }; });
   await prepareBookingReview(page);
-  await page.getByRole('button', { name: 'Confirmar simulação' }).click();
+  await page.getByRole('button', { name: 'Confirmar agendamento' }).click();
   await expect(page.getByRole('status')).toContainText('sessão');
 });

@@ -1,19 +1,15 @@
-import { useDemo } from '../../app/useDemo';
-import { StatusMessage } from '../../ui/StatusMessage';
-import { SiteHeader } from '../landing/SiteHeader';
+import { AppLayout } from '../../app/AppLayout';
 import { Heading } from '../../ui/Heading';
 import { BookingStepper } from './BookingStepper';
-import { BookingSummary } from './BookingSummary';
 import { VisitChoice } from './VisitChoice';
 import { BookingSchedule } from './BookingSchedule';
 import { BookingReview } from './BookingReview';
 import { BookingConfirmation } from './BookingConfirmation';
 import { useBooking, type BookingModel } from './useBooking';
 function BookingWorkspace({ model }: { model: BookingModel }) {
-  return <><BookingStepper step={model.step} /><div className="booking-workspace"><div>{model.step === 0 && <VisitChoice model={model} />}{model.step === 1 && <BookingSchedule model={model} />}{model.step === 2 && <BookingReview model={model} />}</div><BookingSummary input={model.input} /></div></>;
+  return <><BookingStepper step={model.step} />{model.step === 0 && <VisitChoice model={model} />}{model.step === 1 && <BookingSchedule model={model} />}{model.step === 2 && <BookingReview model={model} />}</>;
 }
 export function BookingPage() {
   const model = useBooking();
-  const { notice } = useDemo();
-  return <><SiteHeader /><main className="container booking-page" tabIndex={-1}><StatusMessage message={notice} />{model.step === 3 ? <BookingConfirmation input={model.input} /> : <><Heading eyebrow="Um tempo para cuidar" title="Vamos marcar um encontro?" description="Escolha o atendimento, o dia e o melhor horário para a sua família." /><BookingWorkspace model={model} /></>}</main></>;
+  return <AppLayout booking>{model.step === 3 ? <BookingConfirmation input={model.input} /> : <><Heading title="Agendar consulta" /><BookingWorkspace model={model} /></>}</AppLayout>;
 }

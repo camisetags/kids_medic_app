@@ -1,4 +1,7 @@
 :root {
+  --app-background: #F3F5F2; --app-surface: #FFFFFF; --app-line: #DCE2DA;
+  --app-selected: #E8EEE5; --app-subtle: #EBEEE8;
+  --font-brand: 'Fraunces Variable', Georgia, serif;
   --primary: #344E41; --sage: #8B9D83; --moss: #606C38; --background: #E8DCC7;
   --surface: #EDE3D2; --ink: #293D32; --muted: #4D5948; --clay: #B08B6E; --danger: #9B4535;
   --line: #C8C4AE; --sage-light: #D6DDC8; --clay-light: #DDC7AE; --moss-light: #D4D4B7;

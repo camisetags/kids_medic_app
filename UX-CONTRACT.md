@@ -14,7 +14,7 @@ Visual: `DESIGN.md`. Regras de negócio: desenho aprovado em `docs/superpowers/s
 Não há dropdown, seleção tabular, tabela, autenticação ou integração externa. O calendário é autorado com botões nativos sem implementar um widget ARIA grid. Todas as ações são locais.
 
 ## Operações e estados
-Agendar: selecionar → revisar → confirmar → confirmação com acesso à família. Uma submissão repetida não duplica o horário; datas são revalidadas na confirmação. Cancelar consulta requer confirmação e devolve à lista atualizada. Notas: criar/editar salva e fecha o editor, conservando a lista; excluir requer confirmação. Reiniciar restaura todos os exemplos após confirmação. Escape e cancelar preservam o estado salvo.
+Agendar: selecionar → revisar → confirmar → confirmação curta com atendimento, criança, data e horário → “Ver consulta” abre `/familia/consultas`. Uma submissão repetida não duplica o horário; datas são revalidadas na confirmação. Cancelar consulta requer confirmação e devolve à lista atualizada. Notas: criar/editar salva e fecha o editor, conservando a lista; excluir requer confirmação. Reiniciar restaura todos os exemplos após confirmação. Escape e cancelar preservam o estado salvo.
 
 O editor permanece em modal: clicar na navegação externa enquanto há rascunho não é possível por inert. Fechar um rascunho alterado exige confirmação própria; recarregar com rascunho usa beforeunload apenas para proteção de descarte. Não persistir rascunho sensível na URL.
 
@@ -25,3 +25,6 @@ Dados versionados no localStorage. Falha de leitura restaura exemplos com aviso.
 
 ## Acessibilidade e apresentação
 WCAG 2.2 AA como alvo. Cada rota tem título específico, foco no main e navegação ativa. Modal tem título, Escape, foco e retorno ao acionador. Navegação mobile não cobre conteúdo. Destruição usa verbo explícito e opção segura recebe foco. Estado vazio oferece uma ação útil. Todas as telas mostram o marcador de demonstração; sem cobrança ou reserva real.
+
+## Separação entre apresentação e app
+A landing (`/`) preserva o registro editorial do consultório. AppLayout é o proprietário comum de `/agendar` e `/familia/*`, com conta de exemplo explícita: Marina é a responsável e Clara é a criança. Não há login nem suposição sobre a identidade real do visitante. Títulos e ações nomeiam as tarefas; não usar slogans, saudações personalizadas ou cartões decorativos nas telas funcionais. O marcador global informa que são dados fictícios; o sucesso do agendamento inclui um aviso curto de simulação. Avisos persistentes de armazenamento permanecem no StatusMessage. Regressões: `tests/e2e/app-clarity.spec.ts`.

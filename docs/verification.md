@@ -38,3 +38,14 @@ O verificador de recursos também foi corrigido após uma execução pública de
 ## Pendências menores
 
 Nenhuma pendência menor identificada pela revisão independente. Limites de produto: dados fictícios locais, uma única aba e ausência de integração real com o consultório.
+
+## Revisão de clareza do app — 21/10/2026
+
+Recorte aprovado: manter a landing editorial, separar visualmente o app, reduzir textos e identificar explicitamente Marina como responsável de exemplo e Clara como criança. AppLayout passa a ser o proprietário comum da agenda e da família; a confirmação resume atendimento, criança, data e horário e abre diretamente a lista de consultas. Retirados o resumo duplicado durante a agenda, slogans, saudação personalizada e cartões decorativos do app.
+
+- Regressões de identidade e destino da confirmação foram executadas antes da implementação e falharam por ausência do contexto explícito; passaram após a implementação.
+- 23 testes de domínio e 37 testes de navegador passaram. Cobertura inclui axe nas seis rotas em 390/1440 px, persistência, cancelamento, notas, avisos de armazenamento e proteção de rascunhos.
+- ESLint (máximo de sete linhas por função), TypeScript, build de produção e `git diff --check` passaram.
+- Auditoria premium estrita sem achados. DESIGN.md: zero erros; 11 avisos de tokens documentados sem referência de componente no frontmatter, mapeados para o CSS canônico no próprio documento.
+- Capturas reais de landing, calendário, revisão, confirmação, resumo, acompanhamento, notas e editor em 390/1440 px foram inspecionadas. A landing conserva sua composição; o app usa superfícies neutras, títulos sans menores e ações diretas.
+- Revisão independente somente de leitura de código e capturas: nenhum achado crítico, importante ou menor. Autenticação e validação clínica continuam fora do recorte.

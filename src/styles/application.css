@@ -1,0 +1,172 @@
+/* Product register: functional screens share one shell; landing keeps its editorial style. */
+html:has(.app-shell), body:has(.app-shell) { background: var(--app-background); }
+body:has(.app-shell)::before { display: none; }
+.app-shell, body:has(.app-shell) dialog {
+  --background: var(--app-background);
+  --surface: var(--app-surface);
+  --line: var(--app-line);
+  --sage-light: var(--app-selected);
+  --sand-light: var(--app-subtle);
+  --font-display: var(--font-body);
+  --scrollbar-track: var(--app-background);
+  --radius: 16px;
+  --radius-lg: 16px;
+  background: var(--background);
+  font-size: 14px;
+}
+.app-shell h1, .app-shell h2, .app-shell h3, body:has(.app-shell) dialog h2 { font-weight: 600; letter-spacing: -.025em; }
+.app-shell .brand { gap: 8px; }
+.app-shell .brand strong { font-family: var(--font-brand); font-size: 18px; white-space: nowrap; }
+.app-shell .brand-symbol { width: 30px; height: 34px; }
+.app-shell .brand small { font-size: 7px; }
+.app-shell .button, body:has(.app-shell) dialog .button { min-height: 44px; font-size: 12px; border-radius: 12px; padding: 12px 18px; }
+.app-shell .text-link { font-size: 12px; font-weight: 500; }
+.app-shell .panel { background: var(--surface); border-radius: 16px; padding: 24px; }
+.app-shell .badge { font-size: 10px; padding: 5px 9px; }
+.app-shell .avatar { font-family: var(--font-body); font-weight: 550; background: var(--sage-light); }
+.app-shell .family-sidebar { width: 232px; padding: 28px 20px; background: var(--surface); }
+.app-shell .sidebar-label { font-size: 12px; font-weight: 600; color: var(--ink); margin: 40px 12px 14px; }
+.app-shell .family-navigation a { min-height: 46px; font-size: 12px; padding: 12px; border-radius: 12px; gap: 10px; }
+.app-shell .sidebar-site { margin: auto 12px 0; padding-top: 36px; font-size: 11px; }
+.app-shell .family-topbar { padding: 18px 36px; min-height: 90px; background: var(--surface); }
+.account-context { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.account-example { font-size: 11px; color: var(--muted); }
+.account-context dl { display: flex; gap: 40px; margin: 0; }
+.account-context dt { font-size: 11px; color: var(--muted); }
+.account-context dd { font-size: 13px; font-weight: 550; margin: 2px 0 0; }
+.app-shell .family-main { padding: 30px 36px 48px; max-width: 1160px; }
+.app-shell .page-heading { margin-bottom: 26px; align-items: center; flex-direction: row; }
+.app-shell .page-heading h1 { margin: 0; font-size: 27px; line-height: 1.3; }
+.app-shell .page-heading p { font-size: 13px; margin-top: 6px; }
+.app-shell .overview-grid { grid-template-columns: 1.5fr 1fr; gap: 20px; margin-bottom: 20px; }
+.app-shell .panel-title { margin-bottom: 22px; align-items: center; }
+.app-shell .panel-title h2 { font-size: 18px; line-height: 1.35; }
+.app-shell .next-visit-body { margin: 0; gap: 18px; }
+.app-shell .calendar-tile { width: 64px; height: 76px; border-radius: 12px; font-variant-numeric: tabular-nums; }
+.app-shell .calendar-tile strong { font-size: 29px; font-weight: 550; }
+.app-shell .next-visit-body h3 { font-size: 17px; margin: 10px 0 4px; }
+.app-shell .next-visit-body p { font-size: 12px; }
+.app-shell .visit-time { font-size: 12px; margin-top: 12px; gap: 7px; }
+.app-shell .next-visit-link { font-size: 12px; padding-top: 16px; margin-top: 22px; }
+.app-shell .next-visit-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.app-shell .child-card { padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); display: flex; flex-direction: column; justify-content: space-between; }
+.child-identity { display: flex; gap: 16px; align-items: center; }
+.child-role { font-size: 11px; color: var(--muted); }
+.app-shell .child-avatar { width: 48px; height: 48px; font-size: 15px; }
+.app-shell .child-card h2 { font-size: 21px; margin: 3px 0; }
+.app-shell .child-card p { font-size: 12px; }
+.app-shell .child-card > a { font-size: 12px; margin-top: 24px; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--line); }
+.app-shell .child-card > a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.app-shell .notes-preview { margin: 0; }
+.app-shell .note-preview h3 { font-size: 15px; margin-bottom: 6px; }
+.app-shell .note-preview p { font-size: 13px; }
+.app-shell .notes-create { margin-top: 20px; }
+.app-shell .appointment-row { gap: 20px; padding-block: 22px; }
+.app-shell .appointment-information h3 { font-size: 18px; margin-top: 10px; }
+.app-shell .appointment-information p { font-size: 12px; }
+.app-shell .appointment-row .button { font-size: 11px; }
+.app-shell .stage-tabs { gap: 10px; margin-bottom: 20px; }
+.app-shell .stage-tabs button { min-height: 62px; border-radius: 12px; gap: 10px; padding: 14px; }
+.app-shell .stage-tabs strong { font-size: 12px; }
+.app-shell .stage-details { display: block; padding: 24px; }
+.app-shell .stage-detail-copy h2 { font-size: 20px; margin: 0 0 24px; }
+.app-shell .stage-detail-copy h3 { font-size: 14px; margin: 0; }
+.app-shell .stage-detail-copy ul { margin: 18px 0 24px; gap: 15px; }
+.app-shell .stage-detail-copy li { font-size: 13px; }
+.app-shell .page-disclaimer, .app-shell .info-note { font-size: 12px; }
+.app-shell .notes-intro { margin: -8px 0 24px; }
+.app-shell .notes-grid { gap: 20px; }
+.app-shell .note-card-top { margin-bottom: 18px; }
+.app-shell .note-card h3 { font-size: 17px; margin-bottom: 12px; }
+.app-shell .note-card > p { font-size: 13px; }
+.app-shell .note-card footer { font-size: 11px; margin-top: 24px; }
+.app-shell .note-card footer .badge { font-size: 10px; }
+.app-shell .reset-demo { margin-top: 24px; }
+.app-shell .reset-demo > button { font-size: 11px; }
+.app-shell .booking-main { max-width: 850px; }
+.app-shell .booking-stepper { margin: 0 0 26px; }
+.app-shell .booking-stepper li { font-size: 12px; }
+.app-shell .booking-panel { min-height: 0; }
+.app-shell .booking-panel > h2 { margin: 0 0 22px; font-size: 20px; }
+.app-shell .booking-panel > p { font-size: 12px; }
+.app-shell .visit-options { margin: 0; gap: 12px; }
+.app-shell .selection-card { border-radius: 12px; padding: 18px; }
+.app-shell .selection-copy strong { font-size: 14px; }
+.app-shell .selection-copy small { font-size: 12px; }
+.app-shell .booking-actions { padding-top: 20px; margin-top: 24px; gap: 12px; }
+.app-shell .booking-actions > span { font-size: 11px; }
+.app-shell .day-choice h3, .app-shell .time-choice h3 { font-size: 18px; }
+.app-shell .day-choice > p, .app-shell .time-choice > p { font-size: 12px; }
+.app-shell .day-grid { margin: 20px 0 0; }
+.app-shell .day-button small, .app-shell .day-button > span { font-size: 11px; }
+.app-shell .day-button strong { font-size: 22px; }
+.app-shell .time-button { font-size: 13px; }
+.app-shell .review-details { margin: 0 0 20px; }
+.app-shell .review-details > div { font-size: 13px; padding-block: 15px; }
+.app-shell .confirmation { max-width: 560px; margin: 0 auto; padding: 32px; gap: 22px; }
+.app-shell .confirmation-icon { width: 52px; height: 52px; }
+.app-shell .confirmation h1 { font-size: 24px; line-height: 1.35; }
+.confirmed-details { display: grid; gap: 7px; font-size: 13px; color: var(--muted); }
+.confirmed-details strong { font-size: 17px; color: var(--ink); font-weight: 600; }
+.app-shell .confirmation > small { font-size: 11px; }
+body:has(.app-shell) dialog { background: var(--surface); border-radius: 16px; }
+body:has(.app-shell) .dialog-heading h2 { font-size: 22px; }
+body:has(.app-shell) .field > span { font-size: 13px; }
+body:has(.app-shell) .field input, body:has(.app-shell) .field textarea { font-size: 14px; border-radius: 12px; }
+body:has(.app-shell) .editor-status { font-size: 11px; }
+@media (max-width: 1100px) {
+  .app-shell .overview-grid { grid-template-columns: 1fr; }
+  .app-shell .family-main, .app-shell .family-topbar { padding-inline: 24px; }
+  .app-shell .stage-tabs { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .app-shell .family-sidebar { width: 100%; padding: 16px 20px; min-height: 74px; flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); }
+  .app-shell .brand { gap: 8px; }
+  .app-shell .brand strong { font-size: 19px; }
+  .app-shell .brand small { font-size: 6px; }
+  .app-shell .brand-symbol { width: 29px; height: 33px; }
+  .app-shell .brand-symbol svg { width: 23px; }
+  .app-shell .sidebar-label { display: none; }
+  .app-shell .sidebar-site { margin: 0; padding: 0; font-size: 10px; gap: 3px; }
+  .app-shell .family-topbar { min-height: 106px; padding: 12px 20px; }
+  .account-context { display: block; }
+  .account-example { font-size: 10px; }
+  .account-context dl { gap: 32px; margin-top: 7px; }
+  .account-context dt { font-size: 10px; }
+  .account-context dd { font-size: 12px; }
+  .app-shell .family-navigation { padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); }
+  .app-shell .family-navigation a { min-height: 50px; padding: 7px 2px; font-size: 9px; gap: 4px; }
+  .app-shell .family-navigation a svg { width: 20px; }
+  .app-shell .family-main { padding: 24px 20px 110px; }
+  .app-shell .page-heading { margin-bottom: 22px; gap: 12px; }
+  .app-shell .page-heading h1 { font-size: 24px; }
+  .app-shell .page-heading .button { font-size: 10px; gap: 6px; padding-inline: 12px; }
+  .app-shell .panel, .app-shell .child-card { padding: 20px; }
+  .app-shell .overview-grid { gap: 16px; margin-bottom: 16px; }
+  .app-shell .next-visit-body { gap: 14px; padding: 0; }
+  .app-shell .next-visit-body h3 { font-size: 16px; }
+  .app-shell .visit-time { font-size: 11px; }
+  .app-shell .panel-title h2 { font-size: 17px; }
+  .app-shell .panel-title .text-link { font-size: 11px; }
+  .app-shell .appointment-row > .button { margin-left: 84px; }
+  .app-shell .appointment-information { min-width: 150px; }
+  .app-shell .appointment-information h3 { font-size: 16px; }
+  .app-shell .appointment-information p { font-size: 11px; }
+  .app-shell .stage-tabs strong { font-size: 11px; }
+  .app-shell .stage-tabs button { padding: 13px 10px; }
+  .app-shell .stage-detail-copy li { font-size: 12px; }
+  .app-shell .booking-stepper li { font-size: 10px; }
+  .app-shell .booking-stepper li strong { white-space: normal; }
+  .app-shell .selection-card { padding: 16px 12px; }
+  .app-shell .selection-copy strong { font-size: 13px; }
+  .app-shell .selection-copy small { font-size: 11px; }
+  .app-shell .booking-actions .button { font-size: 11px; padding-inline: 12px; }
+  .app-shell .day-button { padding: 10px 3px; border-radius: 10px; }
+  .app-shell .day-button small, .app-shell .day-button > span { font-size: 9px; }
+  .app-shell .day-button strong { font-size: 19px; }
+  .app-shell .review-details > div { font-size: 12px; gap: 12px; }
+  .app-shell .confirmation { padding: 28px 20px; }
+  .app-shell .confirmation h1 { font-size: 23px; }
+  .confirmed-details strong { font-size: 15px; }
+  .app-shell .confirmation > small { font-size: 10px; }
+}

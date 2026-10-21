@@ -16,9 +16,9 @@ function useNotesPage() {
 }
 function NotesCollection({ open }: { open: (note?: Note) => void }) {
   const { state } = useDemo();
-  return state.notes.length ? <div className="notes-grid">{state.notes.map((note) => <NoteCard key={note.id} note={note} onEdit={() => open(note)} />)}</div> : <div className="panel"><EmptyState title="O que você quer guardar?" description="Uma pergunta, uma descoberta ou um assunto para o próximo encontro."><Button onClick={() => open()}>Criar primeira anotação</Button></EmptyState></div>;
+  return state.notes.length ? <div className="notes-grid">{state.notes.map((note) => <NoteCard key={note.id} note={note} onEdit={() => open(note)} />)}</div> : <div className="panel"><EmptyState title="Nenhuma anotação" description="Registre dúvidas para a próxima consulta."><Button onClick={() => open()}>Criar primeira anotação</Button></EmptyState></div>;
 }
 export function NotesPage() {
   const model = useNotesPage();
-  return <><Heading eyebrow="Entre uma consulta e outra" title="O que vale guardar." description="As perguntas de hoje também fazem parte do cuidado."><Button onClick={() => model.open()}><Plus size={17} />Nova anotação</Button></Heading><p className="notes-intro info-note"><Info size={16} />Este é o seu espaço de exemplos. As anotações não são enviadas à médica.</p><NotesCollection open={model.open} />{model.editor.open && <NoteEditor key={model.editor.note?.id ?? 'new'} note={model.editor.note} title={model.title} onClose={model.close} />}</>;
+  return <><Heading title="Anotações"><Button onClick={() => model.open()}><Plus size={17} />Nova anotação</Button></Heading><p className="notes-intro info-note"><Info size={16} />As anotações ficam neste navegador e não são enviadas à médica.</p><NotesCollection open={model.open} />{model.editor.open && <NoteEditor key={model.editor.note?.id ?? 'new'} note={model.editor.note} title={model.title} onClose={model.close} />}</>;
 }
