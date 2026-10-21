@@ -5,6 +5,7 @@ import { FamilyNavigation } from './FamilyNavigation';
 import { useDemo } from '../../app/useDemo';
 import { StatusMessage } from '../../ui/StatusMessage';
 import { exampleChild } from '../../demo/seed';
+import { ResetDemo } from './ResetDemo';
 function FamilySidebar() {
   return <aside className="family-sidebar"><Brand /><span className="sidebar-label">Um espaço para a sua família</span><FamilyNavigation /><div className="sidebar-bottom"><Leaf size={21} /><p>O cuidado cresce<br /><em>junto com vocês.</em></p><Link to="/" className="text-link">Conhecer o consultório <ArrowUpRight size={14} /></Link></div></aside>;
 }
@@ -13,5 +14,5 @@ function FamilyTopbar() {
 }
 export function FamilyLayout() {
   const { notice } = useDemo();
-  return <div className="family-shell"><FamilySidebar /><div className="family-workspace"><FamilyTopbar /><main className="family-main" tabIndex={-1}><StatusMessage message={notice} /><Outlet /></main></div></div>;
+  return <div className="family-shell"><FamilySidebar /><div className="family-workspace"><FamilyTopbar /><main className="family-main" tabIndex={-1}><StatusMessage message={notice} /><Outlet /><ResetDemo /></main></div></div>;
 }

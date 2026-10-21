@@ -9,7 +9,7 @@ colors:
   background: "#E8DCC7"
   surface: "#EDE3D2"
   ink: "#293D32"
-  muted: "#596653"
+  muted: "#4D5948"
   clay: "#B08B6E"
   danger: "#9B4535"
 typography:

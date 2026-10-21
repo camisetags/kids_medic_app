@@ -29,3 +29,5 @@ main:focus { outline: none; }
 ::-webkit-scrollbar-thumb:active { background: var(--primary); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } /* Accessibility: remove all decorative motion. */ }
 @media (forced-colors: active) { * { scrollbar-color: auto; } .button, .phase-card, .selection-card { border: 1px solid ButtonText; } }
+
+html:has(dialog[open]) { overflow: hidden; }
