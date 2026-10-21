@@ -49,3 +49,5 @@ Recorte aprovado: manter a landing editorial, separar visualmente o app, reduzir
 - Auditoria premium estrita sem achados. DESIGN.md: zero erros; 11 avisos de tokens documentados sem referência de componente no frontmatter, mapeados para o CSS canônico no próprio documento.
 - Capturas reais de landing, calendário, revisão, confirmação, resumo, acompanhamento, notas e editor em 390/1440 px foram inspecionadas. A landing conserva sua composição; o app usa superfícies neutras, títulos sans menores e ações diretas.
 - Revisão independente somente de leitura de código e capturas: nenhum achado crítico, importante ou menor. Autenticação e validação clínica continuam fora do recorte.
+- Publicação da revisão concluída: https://github.com/camisetags/kids_medic_app/actions/runs/39681656589 (commit de produto `8fe4844`). Os mesmos checks passaram no GitHub Actions.
+- Após o deploy, o verificador público confirmou scripts, estilos, fontes e ilustração. A jornada manual no endereço público identificou responsável/criança, concluiu a nova confirmação e abriu `/familia/consultas` com a consulta criada visível.
