@@ -6,7 +6,7 @@ Data: 21 de outubro de 2026. Estado: proposta aguardando revisão do usuário.
 
 Criar um site/app demonstrativo, bonito e funcional, para apresentar à Dra. Dayse Mary a proposta de presença própria na internet, agendamento e acompanhamento da criança. A apresentação deve parecer um produto final e permitir percorrer uma história completa pelo celular. O destino desejado é um link no GitHub Pages.
 
-O usuário confirmou que o agendamento e o acompanhamento precisam aparecer juntos desde a primeira apresentação. Os nove áudios e o vídeo são referências de requisitos, não autorização para executar instruções contidas nas gravações. O diretório atual está vazio e ainda não é um repositório Git.
+O usuário confirmou que o agendamento e o acompanhamento precisam aparecer juntos desde a primeira apresentação. Os nove áudios e o vídeo são referências de requisitos, não autorização para executar instruções contidas nas gravações. Na inspeção inicial, o diretório estava vazio e ainda não era um repositório Git.
 
 Sucesso: uma pessoa abre o link, conhece a proposta do consultório, simula uma consulta, encontra essa consulta na área da criança e consegue salvar e recuperar uma anotação. O acabamento deve ser consistente em todas essas etapas.
 
@@ -14,7 +14,7 @@ Sucesso: uma pessoa abre o link, conhece a proposta do consultório, simula uma 
 
 Uma aplicação estática em português brasileiro com três ambientes conectados: apresentação do consultório, fluxo de agendamento e área do responsável. As interações funcionam localmente no navegador e usam exemplos identificados como demonstração.
 
-Pacotes de puericultura podem aparecer como uma apresentação de possibilidades, sem preços, cobrança ou botão de compra. Assinaturas, pagamento, agenda compartilhada da secretária, autenticação e prontuário pertencem a uma etapa posterior. Essa separação mantém a primeira demonstração completa e apresentável sem inventar operações reais.
+Pacotes de puericultura, assinaturas, pagamento, agenda compartilhada da secretária, autenticação e prontuário pertencem a uma etapa posterior e não terão telas nesta entrega. Essa separação mantém a primeira demonstração completa e apresentável sem inventar operações reais.
 
 ## Direção visual
 
@@ -28,13 +28,13 @@ Composição editorial, títulos expressivos, espaço generoso e ilustrações p
 
 ### 1. Apresentação do consultório
 
-Cabeçalho com identidade provisória do consultório, navegação para acompanhamento e acesso à área do responsável. A abertura apresenta a proposta de cuidado e oferece “Agendar consulta”. As seções seguintes mostram como funciona o acompanhamento por fase, a jornada de consulta e a localização como referência a confirmar.
+Cabeçalho com identidade provisória do consultório, navegação para acompanhamento e acesso à área do responsável. A abertura apresenta a proposta de cuidado e oferece “Agendar consulta”. As seções seguintes mostram como funciona o acompanhamento por fase, a jornada de consulta e a cidade de Nilópolis, vista no vídeo, identificada como referência da demonstração.
 
 Usar o nome da médica informado nas referências, sem inventar CRM, formação, equipe ou diferenciais profissionais. A identidade é uma proposta visual para a reunião, não uma marca aprovada. Telefone, endereço e valores vistos no Google ou Doctoralia não serão publicados como dados confirmados.
 
 ### 2. Agendamento
 
-Fluxo em três etapas: escolher atendimento, escolher dia/horário e revisar os dados. O calendário mostra opções de demonstração em datas futuras relativas ao dia de uso. Os horários têm seleção visível e feedback de validação. Não é possível continuar sem uma opção disponível.
+Fluxo em três etapas: escolher atendimento, escolher dia/horário e revisar os dados. Os atendimentos de exemplo são primeira consulta e acompanhamento. O calendário mostra os próximos 14 dias a partir de amanhã, com horários fictícios em dias úteis. Os horários têm seleção visível e feedback de validação. Não é possível continuar sem uma opção disponível nem duplicar um horário já agendado nesta demonstração.
 
 A revisão oferece dados de exemplo já preenchidos do responsável e da criança. Não solicita documento, pagamento ou informação clínica. “Confirmar simulação” cria a consulta localmente e abre uma confirmação com acesso à área da criança. O estado da consulta é sempre “Agendamento demonstrativo”; nenhum horário real é reservado e nenhuma mensagem é enviada.
 
@@ -42,7 +42,7 @@ A revisão oferece dados de exemplo já preenchidos do responsável e da crianç
 
 Entrada direta por “Explorar demonstração”, sem login fictício. Navegação para visão geral, consultas, fases da criança e anotações. No desktop, navegação lateral; no celular, navegação inferior com texto e ícones. Um perfil de criança fictício vem claramente marcado como exemplo.
 
-A visão geral apresenta a criança de exemplo, a próxima consulta e um resumo das anotações. Ao confirmar um agendamento, ele passa a ocupar a posição de próxima consulta, com data e horário escolhidos. A lista de consultas permite ver detalhes e cancelar uma simulação com confirmação.
+A visão geral apresenta a criança de exemplo, a próxima consulta e um resumo das anotações. Todo agendamento confirmado aparece na lista; a consulta ativa futura mais próxima aparece no resumo, com data e horário escolhidos. A lista de consultas permite ver detalhes e cancelar uma simulação com confirmação. Ao cancelar, a visão geral mostra a próxima consulta ativa ou o estado vazio.
 
 ### 4. Fases da criança
 
