@@ -43,7 +43,7 @@
 
 Tipos em `types.ts`: `VisitKind = 'first' | 'follow-up'`; `Appointment = { id: string; kind: VisitKind; date: string; time: string; status: 'scheduled' | 'cancelled' }`; `Note = { id: string; title: string; body: string; updatedAt: string }`; `DemoState = { version: 1; appointments: Appointment[]; notes: Note[] }`. Datas são chaves locais `YYYY-MM-DD`; horários são `HH:mm`. `BookingInput` contém `kind`, `date` e `time`; `NoteInput` contém `title` e `body`.
 
-## Tarefa 1: Estado demonstrativo confiável
+## Task 1: Estado demonstrativo confiável
 
 **Files:** configurações de projeto e `src/demo/*` definidos acima.
 
@@ -57,7 +57,7 @@ Tipos em `types.ts`: `VisitKind = 'first' | 'follow-up'`; `Appointment = { id: s
 - [ ] Adicionar `loadDemo(storage: Storage | undefined, now: Date): { state: DemoState; notice: string | null }` e `persistDemo(storage: Storage | undefined, state: DemoState): boolean` em `storage.ts`. Chave `kids-medic-demo:v1`; validar todos os campos e recuperar exemplos quando o JSON ou esquema forem inválidos. Testar leitura e gravação que lançam erro, JSON inválido e versão desconhecida antes de implementar.
 - [ ] Executar `npm test -- --run`, `npm run typecheck` e `npm run lint`; esperar sucesso. Registrar commit `feat: add pediatric demo state and scheduling rules`.
 
-## Tarefa 2: Sistema visual e apresentação do consultório
+## Task 2: Sistema visual e apresentação do consultório
 
 **Files:** `DESIGN.md`, `index.html`, `src/main.tsx`, `src/app/{App,Routes}.tsx`, `src/ui/*`, `src/styles/*`, `src/features/landing/*`, `public/art/care-journey.svg`, `playwright.config.ts` e teste de navegação em `tests/e2e/journey.spec.ts`.
 
@@ -70,7 +70,7 @@ Tipos em `types.ts`: `VisitKind = 'first' | 'follow-up'`; `Appointment = { id: s
 - [ ] Implementar `Dialog` com elemento nativo `dialog`, título acessível, fechamento por Escape e retorno de foco. A navegação deve indicar rota ativa; usar landmarks, rótulos de formulário e foco visível. Adicionar suporte a `prefers-reduced-motion`.
 - [ ] Executar teste de entrada e navegação, `npm run lint`, `npm run typecheck` e `npm run build`. Inspecionar landing em 390 px e 1440 px, incluindo contraste, legibilidade e ausência de rolagem horizontal. Registrar commit `feat: build pediatric clinic visual experience`.
 
-## Tarefa 3: Agendamento conectado à área da criança
+## Task 3: Agendamento conectado à área da criança
 
 **Files:** `src/app/{DemoProvider,useDemo}.tsx`, `src/features/booking/*`, `src/features/family/{FamilyLayout,FamilyNavigation,OverviewPage,AppointmentsPage,AppointmentDetails}.tsx`, `tests/e2e/journey.spec.ts` e `tests/e2e/helpers.ts`.
 
@@ -83,7 +83,7 @@ Tipos em `types.ts`: `VisitKind = 'first' | 'follow-up'`; `Appointment = { id: s
 - [ ] Acrescentar teste de cancelamento: abrir detalhes, confirmar cancelamento e verificar estado vazio ou próxima consulta restante. Verificar que o mesmo horário volta a poder ser selecionado. Executar testes da tarefa 1 e jornada completa; inspecionar os estados selecionado, erro e confirmação nos dois tamanhos.
 - [ ] Executar `npm run lint`, `npm run typecheck` e `npm run build`; registrar commit `feat: connect appointment booking and family dashboard`.
 
-## Tarefa 4: Fases, anotações e recuperação da demonstração
+## Task 4: Fases, anotações e recuperação da demonstração
 
 **Files:** `src/features/family/{StagesPage,NotesPage,NoteEditor,ResetDemo}.tsx`, ajustes em `OverviewPage.tsx`, `src/app/DemoProvider.tsx`, `tests/e2e/{journey,resilience}.spec.ts` e `tests/e2e/helpers.ts`.
 
@@ -95,7 +95,7 @@ Tipos em `types.ts`: `VisitKind = 'first' | 'follow-up'`; `Appointment = { id: s
 - [ ] Escrever testes de resiliência: bloquear leitura e gravação de `localStorage`, sem impedir anotar/agendar em memória; injetar JSON inválido e esquema desconhecido e verificar restauração com aviso. Implementar avisos correspondentes sem bloquear navegação.
 - [ ] Implementar reinicialização com confirmação e testar restauração de exemplos após notas e consultas modificadas. Testar acesso direto e recarregamento de cada rota da família. Executar domínio, jornada e resiliência, além de lint, tipos e build; registrar commit `feat: add child follow-up notes and resilient demo reset`.
 
-## Tarefa 5: Revisão visual e publicação no GitHub Pages
+## Task 5: Revisão visual e publicação no GitHub Pages
 
 **Files:** `.github/workflows/pages.yml`, `README.md`, `scripts/check-published.mjs` e refinamentos visuais nos arquivos que os testes ou a inspeção apontarem.
 

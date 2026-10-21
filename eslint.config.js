@@ -1,0 +1,3 @@
+import js from '@eslint/js';
+import ts from 'typescript-eslint';
+export default ts.config({ ignores: ['dist/**', 'node_modules/**', '.superpowers/**', 'playwright-report/**', 'test-results/**'] }, js.configs.recommended, ...ts.configs.recommended, { languageOptions: { globals: { window: 'readonly', document: 'readonly', console: 'readonly', process: 'readonly', URL: 'readonly', fetch: 'readonly', localStorage: 'readonly', Storage: 'readonly', navigator: 'readonly', HTMLElement: 'readonly', HTMLDialogElement: 'readonly', HTMLInputElement: 'readonly', HTMLTextAreaElement: 'readonly', setTimeout: 'readonly', crypto: 'readonly' } }, rules: { 'max-lines-per-function': ['error', { max: 7, skipBlankLines: false, skipComments: false, IIFEs: true }] } });
