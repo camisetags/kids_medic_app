@@ -7,6 +7,7 @@ import { OverviewPage } from '../features/family/OverviewPage';
 import { AppointmentsPage } from '../features/family/AppointmentsPage';
 import { StagesPage } from '../features/family/StagesPage';
 import { NotesPage } from '../features/family/NotesPage';
+import { NotFoundPage } from '../ui/NotFoundPage';
 const titles: Record<string, string> = { '/': 'Pediatria', '/agendar': 'Agendar consulta', '/familia': 'Área da família', '/familia/consultas': 'Consultas', '/familia/fases': 'Fases da criança', '/familia/anotacoes': 'Anotações' };
 function RouteEffects() {
   const { pathname } = useLocation();
@@ -14,5 +15,5 @@ function RouteEffects() {
   return null;
 }
 export function AppRoutes() {
-  return <><RouteEffects /><Routes><Route path="/" element={<LandingPage />} /><Route path="/agendar" element={<BookingPage />} /><Route path="/familia" element={<FamilyLayout />}><Route index element={<OverviewPage />} /><Route path="consultas" element={<AppointmentsPage />} /><Route path="fases" element={<StagesPage />} /><Route path="anotacoes" element={<NotesPage />} /></Route><Route path="*" element={<LandingPage />} /></Routes></>;
+  return <><RouteEffects /><Routes><Route path="/" element={<LandingPage />} /><Route path="/agendar" element={<BookingPage />} /><Route path="/familia" element={<FamilyLayout />}><Route index element={<OverviewPage />} /><Route path="consultas" element={<AppointmentsPage />} /><Route path="fases" element={<StagesPage />} /><Route path="anotacoes" element={<NotesPage />} /></Route><Route path="*" element={<NotFoundPage />} /></Routes></>;
 }

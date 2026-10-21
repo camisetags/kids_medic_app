@@ -1,4 +1,4 @@
-# Demo do consultório pediátrico — desenho para aprovação
+# Demo do consultório pediátrico — desenho aprovado
 
 Data: 21 de outubro de 2026. Estado: aprovado pelo usuário nesta conversa.
 

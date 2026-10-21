@@ -53,3 +53,16 @@ test('Escape permite preservar um rascunho não salvo', async ({ page }) => {
   await page.keyboard.press('Escape');
   await page.getByRole('button', { name: 'Descartar rascunho', exact: true }).click();
 });
+test('build funciona em subdiretório e recarrega a área da criança', async ({ page }) => {
+  await page.goto('http://127.0.0.1:4174/kids_medic_app/#/familia');
+  await expect(page.getByRole('heading', { name: 'Olá, Marina.' })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'Olá, Marina.' })).toBeVisible();
+  await expect(page).toHaveTitle('Área da família · Dra. Dayse Mary');
+});
+test('rota desconhecida oferece retorno ao início', async ({ page }) => {
+  await page.goto('/#/nao-existe');
+  await expect(page.getByRole('heading', { name: 'Página não encontrada' })).toHaveCount(1);
+  await page.getByRole('link', { name: 'Voltar ao início', exact: true }).click();
+  await expect(page).toHaveURL(/#\/$/);
+});
