@@ -8,9 +8,11 @@ async function readResource(url) {
   return { url, text };
 }
 function localLinks(text, base) {
-  const values = [...text.matchAll(/(?:src|href)=["']([^"']+)["']|url\(["']?([^)'"\s]+)["']?\)/g)];
-  return values.map((item) => item[1] ?? item[2]).filter((value) => !value.startsWith('data:')).map((value) => new URL(value, base)).filter((url) => url.origin === root.origin);
+  const html = [...text.matchAll(/(?:src|href)=["']([^"']+)["']/g)].map((item) => item[1]);
+  const css = [...text.matchAll(/url\((?:"([^"]*)"|'([^']*)'|([^ )]+))\)/g)].map((item) => item[1] ?? item[2] ?? item[3]);
+  return [...html, ...css].filter((value) => !value.startsWith('data:') && !value.startsWith('#')).map((value) => new URL(value, base)).filter((url) => url.origin === root.origin);
 }
+
 const entry = await readResource(root);
 if (!entry.text.includes('id="root"')) throw new Error('Página publicada não corresponde à aplicação.');
 const resources = await Promise.all(localLinks(entry.text, root).map(readResource));
