@@ -1,6 +1,6 @@
 # Demo do consultório pediátrico — desenho para aprovação
 
-Data: 21 de outubro de 2026. Estado: proposta aguardando revisão do usuário.
+Data: 21 de outubro de 2026. Estado: aprovado pelo usuário nesta conversa.
 
 ## Objetivo e entendimento confirmado
 
