@@ -4,6 +4,7 @@ import { requireChild } from './children';
 export const visitLabels = { first: 'Primeira consulta', 'follow-up': 'Acompanhamento' };
 function assertSlot(state: DemoState, input: BookingInput, now: Date) {
   if (!Object.hasOwn(visitLabels, input.kind)) throw new Error('Escolha um atendimento.');
+  if (!input.date || !input.time) throw new Error('Escolha o dia e o horário da consulta.');
   if (!getAvailableTimes(state, input.date, now).includes(input.time)) throw new Error('Esse horário não está disponível. Escolha outro dia ou horário.');
 }
 export function bookAppointment(state: DemoState, input: BookingInput, now: Date): DemoState {

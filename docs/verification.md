@@ -51,3 +51,15 @@ Recorte aprovado: manter a landing editorial, separar visualmente o app, reduzir
 - Revisão independente somente de leitura de código e capturas: nenhum achado crítico, importante ou menor. Autenticação e validação clínica continuam fora do recorte.
 - Publicação da revisão concluída: https://github.com/camisetags/kids_medic_app/actions/runs/39681656589 (commit de produto `8fe4844`). Os mesmos checks passaram no GitHub Actions.
 - Após o deploy, o verificador público confirmou scripts, estilos, fontes e ilustração. A jornada manual no endereço público identificou responsável/criança, concluiu a nova confirmação e abriu `/familia/consultas` com a consulta criada visível.
+
+## Admin demonstrativo — 07/11/2026
+
+Desenho aprovado: `docs/superpowers/specs/2026-11-07-admin-demo-design.md`; plano: `docs/superpowers/plans/2026-11-07-admin-demo.md`. Agenda e Crianças compartilham o estado v2 com a família ativa. Cadastro, edição, consulta nova, remarcação, cancelamento, busca, filtros e “Ver como família” são operacionais na demonstração local. Migração preserva consultas e anotações de v1 e seus IDs. Notas permanecem fora do admin.
+
+Verificação: 31 testes de domínio; suite de navegador ampliada com admin, modais axe, recuperação, filtros e isolamento. ESLint (máximo de sete linhas por função), TypeScript e build executados. Auditoria premium estrita sem achados; DESIGN.md sem erros, com 11 avisos documentais já existentes de tokens auxiliares. Capturas de agenda, crianças, formulário e família inspecionadas em 390/1440 px.
+
+Revisão independente do conjunto identificou dois achados importantes, reproduzidos em testes antes da correção: filtro de data ficava invisível ao remarcar a última consulta daquela data; erro de dia/horário não tinha alvo de foco. Ambos corrigidos e cobertos por três regressões RED→GREEN.
+
+Pendência menor da revisão: quando o cancelamento ou remarcação remove a linha sob os filtros atuais, o acionador original deixa de existir e o navegador pode restaurar foco ao corpo; Tab continua na próxima linha. Falta um fallback explícito para o título da lista. Não há perda de dados ou impedimento de continuar.
+
+Decisões e limites: execução inline sem novas pausas, conforme pedido explícito do usuário; demonstração pública sem autenticação, backend ou sincronização entre abas/dispositivos; conteúdo permanece fictício e ilustrativo, sem validação clínica. Revisão deixou publicação para verificação do implementador e não cobriu todas as combinações de navegador. Testes visuais/axe especificados usam Chromium em 390/1440 px.
