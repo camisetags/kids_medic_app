@@ -40,7 +40,7 @@
 - [x] Incluir axe e largura em 390/1440 para novas rotas e modais. Capturar lista, formulário, calendário e família após alteração; inspecionar nomes longos e layout mobile.
 - [x] Executar `npm run lint`, `npm run typecheck`, `npm test -- --run`, `npm run test:e2e`, auditoria premium estrita e lint DESIGN.md. Esperar zero falhas; registrar avisos documentais existentes.
 - [x] Revisão independente do conjunto contra spec e Review Focus; corrigir achados importantes com regressões RED→GREEN e suíte verde. Commit final.
-- [ ] Push autorizado para main, acompanhar workflow, verificar recursos e fluxo no site publicado, registrar resultado e entregar link direto do admin.
+- [x] Push autorizado para main, acompanhar workflow, verificar recursos e fluxo no site publicado, registrar resultado e entregar link direto do admin.
 
 ## Execução
 Execução inline no worktree de feature existente. O usuário aprovou o desenho e pediu “só mete bronca”, autorizando seguir sem novas pausas para plano ou método. Publicação no mesmo Pages já autorizada no desenho aprovado.
