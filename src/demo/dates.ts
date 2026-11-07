@@ -13,9 +13,9 @@ export function isWeekday(date: string): boolean {
   const day = new Date(`${date}T12:00:00`).getDay();
   return day > 0 && day < 6;
 }
-export function getAvailableTimes(state: DemoState, date: string, now: Date): string[] {
+export function getAvailableTimes(state: DemoState, date: string, now: Date, excludeId?: string): string[] {
   if (!getDemoDays(now).includes(date) || !isWeekday(date)) return [];
-  const reserved = state.appointments.filter((item) => item.date === date && item.status === 'scheduled');
+  const reserved = state.appointments.filter((item) => item.date === date && item.status === 'scheduled' && item.id !== excludeId);
   return times.filter((time) => !reserved.some((item) => item.time === time));
 }
 export function formatDate(date: string, options?: Intl.DateTimeFormatOptions): string {

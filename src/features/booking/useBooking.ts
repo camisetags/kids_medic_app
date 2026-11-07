@@ -17,3 +17,5 @@ export function useBooking() {
   return { input, step, error, setStep, change: (patch: Partial<BookingInput>) => changeBooking(setInput, setError, patch), finish: () => completeBooking(input, book, setStep, setError) };
 }
 export type BookingModel = ReturnType<typeof useBooking>;
+
+export type ScheduleModel = Pick<BookingModel, 'input' | 'change'> & { excludeId?: string };

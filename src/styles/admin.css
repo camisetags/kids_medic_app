@@ -1,0 +1,90 @@
+/* Admin extends the functional product register and shared controls. */
+.app-shell .sidebar-tools { display: grid; gap: 18px; margin: auto 10px 0; padding-top: 36px; }
+.app-shell .sidebar-tools .text-link { font-size: 11px; }
+.app-shell .sidebar-tools .sidebar-public { color: var(--muted); font-weight: 400; }
+.app-shell .admin-navigation a.active { background: var(--sage-light); color: var(--primary); font-weight: 600; }
+.app-shell .admin-topbar strong { font-size: 13px; font-weight: 600; }
+.app-shell .admin-topbar > span { font-size: 11px; }
+.select-field select { width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--surface); min-height: 44px; font: inherit; cursor: pointer; }
+.select-field select:disabled { cursor: not-allowed; opacity: .75; }
+.select-field select[aria-invalid=true] { border-color: var(--danger); }
+.search-field { display: flex; align-items: center; gap: 10px; min-height: 46px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 0 12px; color: var(--muted); }
+.search-field:focus-within { outline: 2px solid var(--moss); outline-offset: 2px; }
+.search-field input { width: 100%; min-width: 0; border: 0; background: transparent; outline: none; font-size: 12px; height: 44px; }
+.search-field input::placeholder { color: var(--muted); opacity: 1; }
+.search-field .icon-button { width: 32px; height: 32px; }
+.admin-searchbar { display: flex; gap: 20px; align-items: center; margin-bottom: 24px; }
+.admin-searchbar .search-field { width: min(520px, 100%); }
+.result-count { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.admin-filters { display: grid; grid-template-columns: minmax(220px, 1fr) 190px 150px; gap: 16px; align-items: end; }
+.admin-filters .field { margin: 0; gap: 6px; }
+.admin-filters .field > span { font-size: 11px; }
+.admin-filters select { font-size: 12px; }
+.agenda-count { margin: 20px 0 12px; }
+.app-shell .admin-agenda { padding: 0 24px; }
+.admin-visit-row { display: grid; grid-template-columns: minmax(140px, 1fr) minmax(135px, .8fr) auto; align-items: center; gap: 22px; padding: 24px 0; }
+.admin-visit-row + .admin-visit-row { border-top: 1px solid var(--line); }
+.admin-visit-person { min-width: 0; }
+.admin-visit-person h2 { font-size: 17px; margin-bottom: 5px; overflow-wrap: anywhere; }
+.admin-visit-person p { font-size: 12px; overflow-wrap: anywhere; }
+.admin-visit-kind { color: var(--muted); font-size: 11px; display: block; margin-top: 9px; }
+.admin-visit-slot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 12px; }
+.admin-visit-slot > span:not(.badge) { display: flex; align-items: center; gap: 6px; }
+.admin-visit-slot > span:first-child { flex-basis: 100%; }
+.admin-visit-actions { display: flex; flex-direction: column; gap: 8px; }
+.app-shell .admin-visit-actions .button { font-size: 11px; padding: 10px 14px; min-height: 40px; }
+.admin-visit-actions .button:last-child { border-color: transparent; color: var(--danger); background: transparent; }
+.admin-visit-actions .button:last-child:hover { border-color: var(--danger); }
+.admin-children-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.admin-child-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; min-width: 0; }
+.admin-child-card .child-identity > div { min-width: 0; }
+.admin-child-card h2 { font-size: 19px; line-height: 1.4; overflow-wrap: anywhere; }
+.admin-child-card p { font-size: 12px; margin-top: 3px; }
+.admin-guardian { margin: 22px 0; font-size: 12px; }
+.admin-guardian dt { color: var(--muted); font-size: 11px; margin-bottom: 3px; }
+.admin-guardian dd { margin: 0; overflow-wrap: anywhere; }
+.admin-card-actions { border-top: 1px solid var(--line); padding-top: 18px; display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.app-shell .admin-card-actions .button { font-size: 11px; padding-inline: 12px; }
+.admin-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.admin-form-help { margin-top: 22px; }
+body:has(.admin-shell) dialog:has(.day-choice) { width: min(690px, calc(100% - 32px)); }
+body:has(.admin-shell) dialog .day-choice h3, body:has(.admin-shell) dialog .time-choice h3 { font-size: 18px; }
+body:has(.admin-shell) dialog .day-choice > p, body:has(.admin-shell) dialog .time-choice > p { font-size: 12px; }
+body:has(.admin-shell) dialog .day-button { border-radius: 12px; }
+body:has(.admin-shell) dialog .time-button { font-size: 12px; }
+body:has(.admin-shell) dialog .info-note { font-size: 11px; }
+.app-shell .empty-state h3 { font-size: 19px; }
+.footer-admin { font-size: 10px; }
+.account-context dd { max-width: 270px; overflow-wrap: anywhere; }
+@media (max-width: 1100px) {
+  .admin-visit-row { grid-template-columns: minmax(130px, 1fr) minmax(130px, 1fr); }
+  .admin-visit-actions { grid-column: 1 / -1; flex-direction: row; justify-content: flex-end; }
+  .admin-children-grid { grid-template-columns: 1fr; }
+  .admin-filters { grid-template-columns: 1fr 1fr; }
+  .admin-filters .search-field { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .app-shell .sidebar-tools { padding: 0; margin: 0; }
+  .app-shell .sidebar-tools .text-link { font-size: 9px; gap: 2px; }
+  .app-shell .sidebar-tools .sidebar-public { display: none; }
+  .app-shell .admin-navigation { grid-template-columns: repeat(2, 1fr); }
+  .app-shell .admin-navigation a { flex-direction: row; justify-content: center; font-size: 12px; gap: 8px; }
+  .app-shell .admin-topbar { min-height: 64px; padding-block: 14px; gap: 10px; flex-wrap: wrap; }
+  .app-shell .admin-topbar strong { font-size: 12px; }
+  .app-shell .admin-topbar > span { font-size: 10px; }
+  .admin-filters { gap: 14px 10px; }
+  .admin-searchbar { flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+  .admin-searchbar .search-field { width: 100%; }
+  .app-shell .admin-agenda { padding-inline: 20px; }
+  .admin-visit-row { grid-template-columns: 1fr; gap: 16px; padding-block: 22px; }
+  .admin-visit-slot { gap: 8px 14px; }
+  .admin-visit-slot > span:first-child { flex-basis: auto; }
+  .admin-visit-actions { justify-content: flex-start; }
+  .admin-child-card { padding: 20px; }
+  .admin-form-row { grid-template-columns: 1fr; gap: 0; }
+  body:has(.admin-shell) dialog .day-button { padding-inline: 2px; }
+  body:has(.admin-shell) dialog .day-grid { gap: 4px; }
+  body:has(.admin-shell) dialog .day-button strong { font-size: 17px; }
+  .account-context dl > div { min-width: 0; }
+  .account-context dl { display: grid; grid-template-columns: 1fr 1.6fr; gap: 20px; }
+}

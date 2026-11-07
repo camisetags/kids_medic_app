@@ -1,20 +1,10 @@
-import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
-import { useBlocker, type Blocker } from 'react-router-dom';
+import { useState, type Dispatch, type SetStateAction } from 'react';
+import { type Blocker } from 'react-router-dom';
+import { useUnsavedGuard } from '../../app/useUnsavedGuard';
 import { useDemo } from '../../app/useDemo';
 import type { Note, NoteInput } from '../../demo/types';
 type Draft = { input: NoteInput; error: string; discarding: boolean };
 type SetDraft = Dispatch<SetStateAction<Draft>>;
-function preventUnload(event: BeforeUnloadEvent) {
-  event.preventDefault();
-  event.returnValue = '';
-}
-function useUnsavedGuard(dirty: boolean) {
-  useEffect(() => {
-    if (dirty) window.addEventListener('beforeunload', preventUnload);
-    return () => window.removeEventListener('beforeunload', preventUnload);
-  }, [dirty]);
-  return useBlocker(({ currentLocation, nextLocation }) => dirty && currentLocation.pathname !== nextLocation.pathname);
-}
 function keepDraft(setDraft: SetDraft, blocker: Blocker) {
   blocker.reset?.();
   setDraft((current) => ({ ...current, discarding: false }));

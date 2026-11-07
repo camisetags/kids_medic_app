@@ -7,10 +7,10 @@ import { Button } from '../../ui/Button';
 import { ConfirmDialog } from '../../ui/ConfirmDialog';
 import { useFamily } from '../../app/useFamily';
 import { useDemo } from '../../app/useDemo';
-function VisitCancellation({ visit }: { visit: Appointment }) {
+export function VisitCancellation({ visit, onCancelled }: { visit: Appointment; onCancelled?: () => void }) {
   const [open, setOpen] = useState(false);
   const { cancel } = useDemo();
-  return <><Button className="button-outline" onClick={() => setOpen(true)}>Cancelar consulta</Button><ConfirmDialog open={open} title="Cancelar consulta?" description="O horário ficará disponível novamente." action="Cancelar agendamento" onClose={() => setOpen(false)} onConfirm={() => { cancel(visit.id); setOpen(false); }} /></>;
+  return <><Button className="button-outline" onClick={() => setOpen(true)}>Cancelar consulta</Button><ConfirmDialog open={open} title="Cancelar consulta?" description="O horário ficará disponível novamente." action="Cancelar agendamento" onClose={() => setOpen(false)} onConfirm={() => { cancel(visit.id); setOpen(false); onCancelled?.(); }} /></>;
 }
 export function AppointmentDetails({ visit }: { visit: Appointment }) {
   const { child } = useFamily();

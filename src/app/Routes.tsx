@@ -10,7 +10,10 @@ import { AppointmentsPage } from '../features/family/AppointmentsPage';
 import { StagesPage } from '../features/family/StagesPage';
 import { NotesPage } from '../features/family/NotesPage';
 import { NotFoundPage } from '../ui/NotFoundPage';
-const titles: Record<string, string> = { '/': 'Pediatria', '/agendar': 'Agendar consulta', '/familia': 'Área da família', '/familia/consultas': 'Consultas', '/familia/fases': 'Fases da criança', '/familia/anotacoes': 'Anotações' };
+import { AdminLayout } from '../features/admin/AdminLayout';
+import { AgendaPage } from '../features/admin/AgendaPage';
+import { ChildrenPage } from '../features/admin/ChildrenPage';
+const titles: Record<string, string> = { '/admin': 'Agenda do consultório', '/admin/criancas': 'Crianças', '/': 'Pediatria', '/agendar': 'Agendar consulta', '/familia': 'Área da família', '/familia/consultas': 'Consultas', '/familia/fases': 'Fases da criança', '/familia/anotacoes': 'Anotações' };
 function updatePage(pathname: string) {
   document.title = `${titles[pathname] ?? 'Página não encontrada'} · Dra. Dayse Mary`;
   window.scrollTo(0, 0);
@@ -28,6 +31,7 @@ export const appRouter = createHashRouter(createRoutesFromElements(
   <Route element={<RootLayout />}>
     <Route path="/" element={<LandingPage />} />
     <Route path="/agendar" element={<BookingPage />} />
+    <Route path="/admin" element={<AdminLayout />}><Route index element={<AgendaPage />} /><Route path="criancas" element={<ChildrenPage />} /></Route>
     <Route path="/familia" element={<FamilyLayout />}>
       <Route index element={<OverviewPage />} />
       <Route path="consultas" element={<AppointmentsPage />} />

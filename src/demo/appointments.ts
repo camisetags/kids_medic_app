@@ -21,7 +21,7 @@ export function rescheduleAppointment(state: DemoState, id: string, input: SlotI
   const visit = state.appointments.find((item) => item.id === id);
   if (!visit || visit.status !== 'scheduled' || appointmentTime(visit.date, visit.time) <= now.getTime()) throw new Error('Esta consulta não pode ser remarcada.');
   assertSlot({ ...state, appointments: state.appointments.filter((item) => item.id !== id) }, { ...visit, ...input }, now);
-  return { ...state, appointments: state.appointments.map((item) => item.id === id ? { ...item, ...input } : item) };
+  return { ...state, appointments: state.appointments.map((item) => item.id === id ? { ...item, date: input.date, time: input.time } : item) };
 }
 export function getNextAppointment(state: DemoState, now: Date): Appointment | undefined {
   return state.appointments.filter((item) => item.status === 'scheduled' && appointmentTime(item.date, item.time) > now.getTime())

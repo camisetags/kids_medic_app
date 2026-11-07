@@ -7,5 +7,6 @@ import './styles/base.css';
 import './styles/layout.css';
 import './styles/components.css';
 import './styles/application.css';
+import './styles/admin.css';
 import { App } from './app/App';
 createRoot(document.getElementById('root')!).render(<StrictMode><App /></StrictMode>);

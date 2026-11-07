@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { visitAtWidth, bookFirstVisit, createNote } from './helpers';
 for (const width of [1440, 390]) {
-  for (const route of ['/', '/agendar', '/familia', '/familia/consultas', '/familia/fases', '/familia/anotacoes']) {
+  for (const route of ['/admin', '/admin/criancas', '/', '/agendar', '/familia', '/familia/consultas', '/familia/fases', '/familia/anotacoes']) {
     test(`acessibilidade e largura ${width} ${route}`, async ({ page }) => {
       await visitAtWidth(page, route, width);
       const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
@@ -24,3 +24,12 @@ test('editor acessível com movimento reduzido', async ({ page }) => {
   await expect(page.getByRole('dialog', { name: 'Nova anotação' })).toBeVisible();
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze()).violations).toEqual([]);
 });
+for (const width of [1440, 390]) {
+  for (const [route, action] of [['/admin', 'Nova consulta'], ['/admin/criancas', 'Nova criança']]) {
+    test(`modal administrativo acessível ${width} ${action}`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 }); await page.goto(`/#${route}`);
+      await page.getByRole('button', { name: action, exact: true }).click();
+      expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze()).violations).toEqual([]);
+    });
+  }
+}
