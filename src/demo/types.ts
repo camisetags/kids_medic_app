@@ -1,6 +1,10 @@
 export type VisitKind = 'first' | 'follow-up';
-export type Appointment = { id: string; kind: VisitKind; date: string; time: string; status: 'scheduled' | 'cancelled' };
-export type Note = { id: string; title: string; body: string; updatedAt: string };
-export type DemoState = { version: 1; appointments: Appointment[]; notes: Note[] };
-export type BookingInput = Pick<Appointment, 'kind' | 'date' | 'time'>;
+export type Child = { id: string; name: string; ageMonths: number; guardian: string };
+export type ChildInput = Omit<Child, 'id'>;
+export type Appointment = { id: string; childId: string; kind: VisitKind; date: string; time: string; status: 'scheduled' | 'cancelled' };
+export type Note = { id: string; childId: string; title: string; body: string; updatedAt: string };
+export type DemoState = { version: 2; children: Child[]; activeChildId: string; appointments: Appointment[]; notes: Note[] };
+export type BookingInput = Pick<Appointment, 'kind' | 'date' | 'time'> & { childId?: string };
 export type NoteInput = Pick<Note, 'title' | 'body'>;
+export type SlotInput = Pick<Appointment, 'date' | 'time'>;
+export type LegacyState = { version: 1; appointments: Omit<Appointment, 'childId'>[]; notes: Omit<Note, 'childId'>[] };

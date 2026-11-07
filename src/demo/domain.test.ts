@@ -4,7 +4,7 @@ import { bookAppointment, cancelAppointment, getNextAppointment } from './appoin
 import { saveNote, deleteNote } from './notes';
 import type { DemoState } from './types';
 const now = new Date(2026, 9, 21, 12);
-const empty = (): DemoState => ({ version: 1, appointments: [], notes: [] });
+const empty = (): DemoState => ({ version: 2, children: [{ id: 'clara', name: 'Clara', ageMonths: 9, guardian: 'Marina' }], activeChildId: 'clara', appointments: [], notes: [] });
 const visit = { kind: 'first' as const, date: '2026-10-22', time: '09:00' };
 test('janela local cruza ano', () => {
   const days = getDemoDays(new Date(2026, 11, 31, 23));

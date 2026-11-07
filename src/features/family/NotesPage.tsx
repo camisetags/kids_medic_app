@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Plus, Info } from 'lucide-react';
-import { useDemo } from '../../app/useDemo';
+import { useFamily } from '../../app/useFamily';
 import type { Note } from '../../demo/types';
 import { Heading } from '../../ui/Heading';
 import { Button } from '../../ui/Button';
@@ -15,7 +15,7 @@ function useNotesPage() {
   return { editor, title, open: (note?: Note) => setEditor({ open: true, note }), close: () => { setEditor({ open: false }); setParams({}); } };
 }
 function NotesCollection({ open }: { open: (note?: Note) => void }) {
-  const { state } = useDemo();
+  const { state } = useFamily();
   return state.notes.length ? <div className="notes-grid">{state.notes.map((note) => <NoteCard key={note.id} note={note} onEdit={() => open(note)} />)}</div> : <div className="panel"><EmptyState title="Nenhuma anotação" description="Registre dúvidas para a próxima consulta."><Button onClick={() => open()}>Criar primeira anotação</Button></EmptyState></div>;
 }
 export function NotesPage() {

@@ -1,12 +1,13 @@
 import type { DemoState } from './types';
 import { createDemoState } from './seed';
 import { isDemoState } from './validation';
+import { migrateDemo } from './migration';
 export const storageKey = 'kids-medic-demo:v1';
 const memoryNotice = 'As mudanças ficam disponíveis nesta sessão. Seu navegador não permitiu salvar os exemplos.';
 function readDemo(storage: Storage | undefined, now: Date) {
   if (!storage) throw new Error('Storage unavailable');
   const raw = storage.getItem(storageKey);
-  const state: unknown = raw === null ? createDemoState(now) : JSON.parse(raw);
+  const state: unknown = raw === null ? createDemoState(now) : migrateDemo(JSON.parse(raw));
   if (!isDemoState(state)) throw new Error('Invalid demo state');
   return { state, notice: null };
 }

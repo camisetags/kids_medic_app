@@ -1,8 +1,8 @@
 import { ArrowUpRight, NotebookPen } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useDemo } from '../../app/useDemo';
+import { useFamily } from '../../app/useFamily';
 function PreviewContent() {
-  const { state } = useDemo();
+  const { state } = useFamily();
   const note = state.notes[0];
   return note ? <div className="note-preview"><span className="soft-icon"><NotebookPen size={23} strokeWidth={1.4} /></span><div><h3>{note.title}</h3><p>{note.body}</p></div></div> : <p className="note-preview-empty">Nenhuma anotação.</p>;
 }
